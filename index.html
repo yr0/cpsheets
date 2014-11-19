@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
     <script src="javascripts/scale.fix.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
     <!--[if lt IE 9]>
@@ -25,7 +26,12 @@
         <h1>
 <a id="cpsheets" class="anchor" href="#cpsheets" aria-hidden="true"><span class="octicon octicon-link"></span></a>cpsheets</h1>
 
-<p>Compute conventional printed sheets based on page format and amount of pages</p>
+<p>Підрахувати:</p>
+<span>Формат сторінки книги: </span>
+<select id="formats"></select>
+<span>Загальна кількість сторінок: </span> <input id="numPages" />
+<button id="submit">Підрахувати</button>
+<div id="result"></div>
       </section>
     </div>
     <footer>
@@ -33,6 +39,14 @@
       <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
     </footer>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-    
+    <script type="text/javascript">
+      $(document).ready(function(){
+        // var abc = ["a", "b", "c"]
+        
+        // for (var i = 1; i < 7; i++) {
+          
+        // }
+      });
+    </script>
   </body>
 </html>
