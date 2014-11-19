@@ -58,6 +58,7 @@
                     num = parseInt(format.substr(1)) - 1,
                     pages = parseInt($("#numPages").val()),
                     res = Math.round(((pages / (Math.pow(2, num))) * quot) * 100) / 100;
+            if(typeof res === 'NaN') return;
             $("#result").html(res + " у. д. а.");
         });
     });
