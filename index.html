@@ -1,6 +1,6 @@
 <!doctype html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Підрахувати умовні друковані аркуші</title>
@@ -14,39 +14,53 @@
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
+</head>
+<body>
+<div class="wrapper">
+    <header>
         <h1>Умовні друковані аркуші</h1>
-        <p>Compute conventional printed sheets based on page format and amount of pages</p>
+        <p>Підрахувати умовні друковані аркуші за форматом сторінки книги та загальною кількістю сторінок</p>
         <p class="view"><a href="https://github.com/yr0/cpsheets">View the Project on GitHub <small>yr0/cpsheets</small></a></p>
-      </header>
-      <section>
-        <h1>
-<a id="cpsheets" class="anchor" href="#cpsheets" aria-hidden="true"><span class="octicon octicon-link"></span></a>cpsheets</h1>
+    </header>
+    <section>
 
-<p>Підрахувати:</p>
-<span>Формат сторінки книги: </span>
-<select id="formats"></select>
-<span>Загальна кількість сторінок: </span> <input id="numPages" />
-<button id="submit">Підрахувати</button>
-<div id="result"></div>
-      </section>
-    </div>
-    <footer>
-      <p>Project maintained by <a href="https://github.com/yr0">yr0</a></p>
-      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
-    </footer>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-    <script type="text/javascript">
-      $(document).ready(function(){
-        // var abc = ["a", "b", "c"]
-        
-        // for (var i = 1; i < 7; i++) {
-          
-        // }
-      });
-    </script>
-  </body>
+        <b>Формат сторінки книги: </b>
+        <select id="formats"></select>
+
+        <b>Загальна кількість сторінок: </b> <input id="numPages" style="width:50px" />
+
+        <button id="submit">Підрахувати</button>
+        <h2 style="width:100%; text-align: center; margin-top: 10px">
+            <span id="result" style="font-weight: bold; color: green"></span>
+        </h2>
+    </section>
+</div>
+<footer>
+    <p>Project maintained by <a href="https://github.com/yr0">yr0</a></p>
+    <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+</footer>
+<!--[if !IE]><script>fixScale(document);</script><![endif]-->
+<script type="text/javascript">
+    $(document).ready(function(){
+        var quots = {
+            a: 0.93,
+            b: 1.3
+        };
+        Object.keys(quots).map(function(e){
+            for (var i = 6; i > 0; i--) {
+                $("#formats").append("<option>" + (e + i) + "</option>")
+            }
+        });
+
+        $("#submit").click(function(){
+            var format = $("#formats").val(),
+                    quot = quots[format.substr(0, 1)],
+                    num = parseInt(format.substr(1)) - 1,
+                    pages = parseInt($("#numPages").val()),
+                    res = Math.round(((pages / (Math.pow(2, num))) * quot) * 100) / 100;
+            $("#result").html(res + " у. д. а.");
+        });
+    });
+</script>
+</body>
 </html>
